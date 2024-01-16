@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Crud_videojuegos" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/dark_grey</item>
+    </style>
+
+    <style name="Theme.Crud_videojuegos" parent="Base.Theme.Crud_videojuegos" />
+</resources>

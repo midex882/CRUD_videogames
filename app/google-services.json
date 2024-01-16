@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "914993368785",
+    "firebase_url": "https://crud-a51ad-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "crud-a51ad",
+    "storage_bucket": "crud-a51ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914993368785:android:d728acb2f4f115053d7ff0",
+        "android_client_info": {
+          "package_name": "com.example.crud_videojuegos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZh44BBiRqHryoxqjiObepAHUIx00HplU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
