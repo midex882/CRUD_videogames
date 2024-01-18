@@ -80,29 +80,56 @@ class GameAdapter(private val game_list: MutableList<Game>): RecyclerView.Adapte
         val delete: ImageView = itemView.findViewById(R.id.delete)
     }
 
+//    override fun getFilter(): Filter {
+//        return  object : Filter(){
+//            override fun performFiltering(p0: CharSequence?): FilterResults {
+//                val busqueda = p0.toString().lowercase()
+//                if (busqueda.isEmpty()){
+//                    lista_filtrada = game_list
+//                }else {
+//                    lista_filtrada = (game_list.filter {
+//                        it.title.toString().lowercase().contains(busqueda)
+//                    }) as MutableList<Game>
+//                }
+//
+//                val filterResults = FilterResults()
+//                filterResults.values = lista_filtrada
+//                return filterResults
+//            }
+//
+//            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+//                notifyDataSetChanged()
+//            }
+//
+//        }
+//    }
+
     override fun getFilter(): Filter {
-        return  object : Filter(){
-            override fun performFiltering(p0: CharSequence?): FilterResults {
-                val busqueda = p0.toString().lowercase()
-                if (busqueda.isEmpty()){
-                    lista_filtrada = game_list
-                }else {
-                    lista_filtrada = (game_list.filter {
-                        it.title.toString().lowercase().contains(busqueda)
-                    }) as MutableList<Game>
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterResults = FilterResults()
+                val searchText = constraint?.toString()?.toLowerCase()
+
+                if (searchText.isNullOrEmpty()) {
+                    filterResults.values = game_list
+                } else {
+                    val filteredList = game_list.filter {
+                        it.title?.toLowerCase()?.contains(searchText) == true
+                    }
+                    filterResults.values = filteredList
                 }
 
-                val filterResults = FilterResults()
-                filterResults.values = lista_filtrada
                 return filterResults
             }
 
-            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 notifyDataSetChanged()
             }
-
         }
     }
+
+
+
 
 
 }

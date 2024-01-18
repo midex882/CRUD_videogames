@@ -2,15 +2,19 @@ package com.example.crud_videojuegos
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.SpinnerAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -24,6 +28,7 @@ class ListGames : AppCompatActivity() {
 
     private lateinit var volver: ImageView
     private lateinit var spinnerLayout : Spinner
+    private lateinit var searchBar : TextInputEditText
     private lateinit var recycler: RecyclerView
     private  lateinit var lista:MutableList<Game>
     private lateinit var adaptador: GameAdapter
@@ -65,6 +70,14 @@ class ListGames : AppCompatActivity() {
         recycler.layoutManager = LinearLayoutManager(applicationContext)
         recycler.setHasFixedSize(true)
         spinnerLayout = findViewById(R.id.spinnerOptions)
+        searchBar = findViewById(R.id.search)
+
+        Log.v("test", "hola".contains("hol").toString())
+
+        searchBar.addTextChangedListener{
+
+            adaptador.filter.filter(it)
+        }
 
         spinnerLayout.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
